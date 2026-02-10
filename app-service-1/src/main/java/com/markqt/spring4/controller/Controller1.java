@@ -7,6 +7,6 @@ public class Controller1 {
 
     @GetMapping("/")
     String home() {
-        return "Hello World! Service 1 " + com.markqt.libs.Utils.getMessage("Mark");
+        return "1. Hello World! Service 1 " + com.markqt.libs.Utils.getMessage("Mark");
     }
 }
