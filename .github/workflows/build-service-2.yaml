@@ -1,0 +1,12 @@
+name: Trigger reusable workflow for app-service-2
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'app-service-2/**'  # Trigger only when files in app-service-2 change
+
+jobs:
+  trigger-reusable-workflow:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      project-name: 'app-service-2'

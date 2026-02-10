@@ -2,6 +2,9 @@ name: Trigger reusable workflow for app-service-1
 on:
   push:
     branches: [main, master]
+    paths:
+      - 'app-service-1/**'  # Trigger only when files in app-service-1 change
+      - 'shared-library/**'  # Also trigger when shared library changes, as it may affect app-service-1
 
 jobs:
   trigger-reusable-workflow:
