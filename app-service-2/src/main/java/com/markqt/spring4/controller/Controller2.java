@@ -7,6 +7,6 @@ public class Controller2 {
 
     @GetMapping("/")
     String home() {
-        return "Hello World! Service 2";
+        return "2. Hello World! Service 2";
     }
 }
