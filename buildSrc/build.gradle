@@ -1,0 +1,12 @@
+apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy-gradle-plugin'
+
+repositories {
+    gradlePluginPortal()
+}
+
+dependencies {
+    
+    // Add any dependencies needed by your build logic itself (e.g., Spring Boot dependencies for testing)
+}

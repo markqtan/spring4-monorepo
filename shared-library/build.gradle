@@ -1,0 +1,7 @@
+
+apply plugin: 'java-library' // Use java-library for reusable code
+// apply plugin: "spring-common-conventions" //not to use because it has bootJar
+
+dependencies {
+    // Add library dependencies here
+}

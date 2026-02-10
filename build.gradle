@@ -1,0 +1,46 @@
+plugins {
+	id 'java' //apply false
+	id 'org.springframework.boot' version '4.0.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+	group = 'com.markqt'
+	version = '0.0.1-SNAPSHOT'
+	description = 'Root project for Spring Boot monorepo with multiple services and shared library'
+    // Common configurations for all subprojects can go here
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+// repositories {
+// 	mavenCentral()
+// }
+
+// tasks.named('test') {
+// 	useJUnitPlatform()
+// }
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
