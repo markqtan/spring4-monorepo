@@ -1,0 +1,10 @@
+name: Trigger reusable workflow for app-service-1
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  trigger-reusable-workflow:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      project-name: 'app-service-1'

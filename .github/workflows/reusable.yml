@@ -1,8 +1,12 @@
-name: cicd for spring boot bradle monorepo
+name: Reusable Workflow for Spring Boot Gradle Monorepo
 on:
-  push:
-    branches: [mainx, masterx]
-
+    workflow_call:
+        inputs:
+            project-name:
+                description: 'subproject name to build'
+                required: true
+                default: 'app-service-1'
+                type: string
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +37,7 @@ jobs:
       run: chmod +x ./gradlew
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew clean :${{inputs.project-name}}:build
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
