@@ -1,0 +1,50 @@
+name: cicd for spring boot bradle monorepo
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+
+    - name: Print current working directory
+      run: pwd
+        
+    - name: List files to confirm contents - before build
+      run: ls -F  
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: 25
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    - name: Change wrapper permissions
+      run: chmod +x ./gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: spring4-artifact
+        path: build/libs/*.jar
+
+    - name: List files to confirm contents - after build
+      run: ls -F  
+
+    - name: Download arifact
+      uses: actions/download-artifact@v5
+      with:
+        name: spring4-artifact
+
+    - name: Display structure of downloaded files
+      run: ls -R
